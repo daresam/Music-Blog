@@ -1,0 +1,11 @@
+<div class="card mb-3">
+    <img class="card-img-top" src="../../../../assets/images/placeholder.png" alt="Card image cap" >
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">{{ post.body.substring(0, 50) }}.</p>
+      <a href="#" class="btn btn-primary">By username</a>
+      <a [routerLink]="['/post/'+post.id]" class="btn btn-outline-primary mx-2">Read More...</a>
+      <div><i class="fas fa-comment"></i> {{ comments?.length }}</div>
+    </div>
+
+  </div>

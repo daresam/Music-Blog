@@ -1,3 +1,49 @@
-<p>
-  posts works!
-</p>
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Hello, world!</h1>
+    <p>This is a template for a simple marketing or informational website. It includes a large callout called a
+      jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let post of posts  | paginate: {itemsPerPage:itemsCount.value, currentPage: page};
+        index as k">
+      <div class="col">
+        <app-post-card [post]="post"></app-post-card>
+      </div>
+      <div *ngIf="(k + 1) % 3 === 0" class="w-100"></div>
+    </ng-container>
+  </div>
+
+  <span *ngIf="loading" class="text-success">
+      <i class="fas fa-spinner fa-pulse fa-3x"></i>
+  </span>
+
+  <!-- Pagination Controls -->
+  <div class="row">
+    <div class="col-sm-4">
+      <form role="form" class="paging-form">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                Count/List
+              </div>
+            </div>
+            <select class="form-control" #itemsCount="ngModel" name="count" [(ngModel)]="paginator.num">
+              <option value="null" disabled>--Select count--</option>
+              <option *ngFor="let num of [1, 5, 10, 20, 50, 100]" [value]=num>{{num}}</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-8">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+
+</div> <!-- /container -->

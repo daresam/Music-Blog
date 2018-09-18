@@ -1,3 +1,110 @@
-<p>
-  users works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="text-success">Users</h4>
+      <hr>
+    </div>
+  </div>
+  <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr class="bg-success text-white">
+            <th>*</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users
+          | paginate: {itemsPerPage:itemsCount.value, currentPage: page};
+          index as k">
+            <td>{{ k + 1}}</td>
+            <td>{{ user.name }}</td>
+            <td >{{ user.username}}</td>
+            <td >{{ user.email}}</td>
+            <td >{{ user.phone }}</td>
+            <td >{{ user.website}}</td>
+            <td>
+              <span class="text-info pointy" (click)="triggerView(user)"  data-target="#userModal" data-toggle="modal">
+                  <b>
+                    <i class="fas fa-pen-square"></i> View More</b>
+                </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <span *ngIf="loading" class="text-success">
+          <i class="fas fa-spinner fa-pulse fa-3x"></i>
+      </span>
+
+  </div>
+  <!-- Pagination Controls -->
+  <div class="row">
+      <div class="col-sm-4">
+        <form role="form" class="paging-form">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  Count/List
+                </div>
+              </div>
+              <select class="form-control" #itemsCount="ngModel" name="count" [(ngModel)]="paginator.num">
+                <option value="null" disabled>--Select count--</option>
+                <option *ngFor="let num of [1, 5, 10, 20, 50]" [value]=num>{{num}}</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-8">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+     </div>
+</div>
+
+
+<!-- View More Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header  text-white bg-success  mb-3"  >
+          <h4 class="modal-title" id="userModalLabel">
+            {{ user?.username }}'s Profile
+          </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-around">
+              <div class="">
+                <p><strong>Name:</strong> {{ user?.name }}</p>
+                <p><strong>Email:</strong> {{ user?.email }}</p>
+                <p><strong>Website:</strong> {{ user?.website }}</p>
+              </div>
+              <div class="">
+                <p><strong>Username:</strong> {{ user?.username }}</p>
+                <p><strong>Phone No:</strong> {{ user?.phone }}</p>
+                <p><strong>Company Name:</strong> {{ user?.company.name }}</p>
+              </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class=" ">
+              <p><strong>Address: </strong> </p>
+              <p><em>Street:</em> {{user?.address.street}}</p>
+              <p><em>City:</em> {{user?.address.city}}</p>
+              <p><em>Zip Code:</em> {{user?.address.zipcode}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button  type="button" class="btn btn-outline-success" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
