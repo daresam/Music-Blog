@@ -12,8 +12,8 @@ import { Photo } from '../../model/Photo';
 })
 export class AlbumComponent implements OnInit {
 
-  loading: boolean; // load spinner
-  album: Album; // Store an album from the api
+  loading: boolean; // Hide and show the spinner
+  album: Album; // Store a single album from the api
   id: number; // To store id retrieved from the url
   photos: Photo[]; // Store all the photos from the api
   constructor(private blogService: BlogService,
@@ -26,6 +26,7 @@ export class AlbumComponent implements OnInit {
     this.getAlbumPhotos(this.id);  // get all an album with its respective photos
   }
 
+  // Get a single album
   getAlbum(id) {
     this.blogService.getAlbum(id)
       .subscribe(data => {
@@ -34,6 +35,8 @@ export class AlbumComponent implements OnInit {
         }
       });
   }
+
+  // get an album with its respective photos
   getAlbumPhotos(id) {
     this.blogService.getAlbumPhotos(id)
       .subscribe(data => {

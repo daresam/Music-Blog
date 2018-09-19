@@ -22,6 +22,7 @@ export class AlbumsComponent implements OnInit {
     this.onGetAlbums();
   }
 
+  // Get all Albums from the api
   onGetAlbums() {
     this.blogService.getAlbums()
       .subscribe(data => {

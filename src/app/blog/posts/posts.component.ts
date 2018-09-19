@@ -23,6 +23,7 @@ export class PostsComponent implements OnInit {
     this.onGetPosts();
   }
 
+  // Load all posts from the api
   onGetPosts() {
     this.blogService.getPosts()
       .subscribe(data => {

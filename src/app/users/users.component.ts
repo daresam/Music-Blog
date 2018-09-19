@@ -12,7 +12,7 @@ export class UsersComponent implements OnInit {
   loading: boolean; // To show and hide the spinner
   users: User[]; // Store all users fetch from the api
   user: User; // Store a user
-  page = 1; // ngx-pagination property to indicate current
+  page = 1; // ngx-pagination property to indicate current page
   paginator = { num: null }; // ngx-pagination count
 
   constructor(private blogService: BlogService) { }
@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
     this.onGetUsers();
   }
 
+  // Get all Users fro the api
   onGetUsers() {
     this.blogService.getUsers()
       .subscribe(data => {
@@ -32,6 +33,7 @@ export class UsersComponent implements OnInit {
         }
       });
   }
+  
   triggerView(user: User) {
     this.user = user;
   }

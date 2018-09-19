@@ -8,7 +8,7 @@ import { Photo } from '../../model/Photo';
 })
 export class PhotosComponent implements OnInit {
 
-  @Input('photos') photos: Photo[];
+  @Input('photos') photos: Photo[]; // Receive array of photos from the parent component
   loading: boolean; // To show and hide the spinner
   page = 1; // ngx-pagination property to indicate current
   paginator = { num: null }; // ngx-pagination count

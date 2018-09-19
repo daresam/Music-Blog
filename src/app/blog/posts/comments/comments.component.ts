@@ -8,7 +8,7 @@ import { Comment } from '../../../model/Comment';
 })
 export class CommentsComponent implements OnInit {
 
-  @Input('comments') comments: Comment[];
+  @Input('comments') comments: Comment[]; // Receive array of comments from the parent component
   constructor() { }
 
   ngOnInit() {

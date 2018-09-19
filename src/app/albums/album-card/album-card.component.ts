@@ -10,7 +10,7 @@ import { Photo } from '../../model/Photo';
 })
 export class AlbumCardComponent implements OnInit {
 
-  @Input('album') album: Album; // album input property
+  @Input('album') album: Album; // Receive a single album from the parent component
   photos: Photo[] = []; // Store all the photos from the api
   constructor(private blogService: BlogService) { }
 
@@ -18,6 +18,7 @@ export class AlbumCardComponent implements OnInit {
     this.album ? this.onGetAlbumPhotos(this.album) : null;
   }
 
+  // Get a single album with its respective photos
   onGetAlbumPhotos(id) {
     this.blogService.getAlbumPhotos(id)
       .subscribe(data => {

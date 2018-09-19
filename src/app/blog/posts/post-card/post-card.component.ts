@@ -16,11 +16,12 @@ export class PostCardComponent implements OnInit {
   constructor(private blogService: BlogService) { }
 
   ngOnInit() {
-    this.post ? this.getPostComments(this.post.id) : '';
+    this.post ? this.onGetPostComments(this.post.id) : '';
   }
 
 
-  getPostComments(id) {
+  // get a single post from its respective comments
+  onGetPostComments(id) {
     this.blogService.getPostComments(id)
       .subscribe(data => {
         if (data.status === 200) {

@@ -11,10 +11,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  loading: boolean;
-  post: Post;
-  id: number;
-  comments: Comment[];
+  loading: boolean; // To hide and show the spinner
+  post: Post; // Store the post retrieved from the api
+  id: number; // Store the id retrievd from the url 
+  comments: Comment[]; // Store the all the comments retrieved from the api
   constructor(private blogService: BlogService,
     public router: Router, public route: ActivatedRoute) { }
 
@@ -25,25 +25,26 @@ export class PostComponent implements OnInit {
     this.getPostComments(this.id);
   }
 
+  // Get a single post
   getPost(id) {
     this.blogService.getPost(id)
       .subscribe(data => {
         if (data.status === 200) {
           this.post = data.body;
-          // console.log(this.post);
         }
         if (data.status === 404) {
           this.post = null;
         }
       });
   }
+
+  //  Get a single post with its respective comments
   getPostComments(id) {
     this.blogService.getPostComments(id)
       .subscribe(data => {
         if (data.status === 200) {
           this.loading = false;
           this.comments = data.body;
-          console.log(this.comments);
         }
       });
   }
