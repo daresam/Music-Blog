@@ -1,6 +1,10 @@
-# AngularBlog
+# Music Blog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+
+## To Install
+
+Run `npm install`
 
 ## Development server
 
