@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
-import { Post } from '../../model/Post';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Album } from '../../model/Album';
 import { Photo } from '../../model/Photo';

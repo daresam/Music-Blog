@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Post } from '../../model/Post';
-import { User } from '../../model/User';
 
 @Component({
   selector: 'app-posts',
