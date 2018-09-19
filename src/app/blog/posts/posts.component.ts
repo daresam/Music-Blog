@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../services/blog.service';
 import { Post } from '../../model/Post';
+import { User } from '../../model/User';
 
 @Component({
   selector: 'app-posts',
@@ -10,14 +11,14 @@ import { Post } from '../../model/Post';
 export class PostsComponent implements OnInit {
 
   loading: boolean; // To show and hide the spinner
-  posts: Post[] = []; // Store all the posts from the api
+  posts: Post[] = []; // Store all the posts from the api  
   page = 1; // ngx-pagination property to indicate current
   paginator = { num: null }; // ngx-pagination count
 
   constructor(private blogService: BlogService) { }
 
   ngOnInit() {
-    this.paginator.num = 12;
+    this.paginator.num = 10;
     this.loading = true;
     this.onGetPosts();
   }
@@ -31,5 +32,6 @@ export class PostsComponent implements OnInit {
         }
       });
   }
+  
 
 }

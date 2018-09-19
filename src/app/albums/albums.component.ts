@@ -9,19 +9,25 @@ import { BlogService } from '../services/blog.service';
 })
 export class AlbumsComponent implements OnInit {
 
-  albums: Album[];
-  constructor(private blogservice: BlogService) { }
+  albums: Album[]; // Store all the albums from the api 
+  loading: boolean; // To show and hide the spinner
+  page = 1; // ngx-pagination property to indicate current
+  paginator = { num: null }; // ngx-pagination count
+
+  constructor(private blogService: BlogService) { }
 
   ngOnInit() {
+    this.paginator.num = 10;
+    this.loading = true;
     this.onGetAlbums();
   }
 
   onGetAlbums() {
-    this.blogservice.getAlbums()
+    this.blogService.getAlbums()
       .subscribe(data => {
         if (data.status === 200) {
+          this.loading = false;
           this.albums = data.body;
-          console.log(this.albums);
         }
       });
   }

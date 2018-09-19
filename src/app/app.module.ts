@@ -17,6 +17,9 @@ import { RoutingModule } from './routing.module';
 import { Page404Component } from './page404/page404.component';
 import { PostComponent } from './blog/posts/post/post.component';
 import { PostCardComponent } from './blog/posts/post-card/post-card.component';
+import { AlbumComponent } from './albums/album/album.component';
+import { AlbumCardComponent } from './albums/album-card/album-card.component';
+import { PhotosComponent } from './albums/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { PostCardComponent } from './blog/posts/post-card/post-card.component';
     UsersComponent,
     Page404Component,
     PostComponent,
-    PostCardComponent
+    PostCardComponent,
+    AlbumComponent,
+    AlbumCardComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,

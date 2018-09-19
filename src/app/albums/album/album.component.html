@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col">
+          <h4 class="text-success">Album</h4>
+          <hr>
+        </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+          <div class="card ">
+              <img class="card-img-top" src="../../../../assets/images/thumbnail.svg" style="height: 20rem" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{ album?.title }}</h5>
+              </div>
+              <hr>
+              <app-photos [photos]="photos"></app-photos>
+            
+            <span *ngIf="loading" class="text-success">
+                <i class="fas fa-spinner fa-pulse fa-3x"></i>
+            </span>
+          </div>
+  
+      </div>
+    </div>
+  
+  </div>

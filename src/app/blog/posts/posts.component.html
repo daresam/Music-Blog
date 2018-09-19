@@ -1,23 +1,23 @@
 <div class="jumbotron">
   <div class="container">
-    <h1 class="display-3">Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-      jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    <h1 class="display-3">Welcome To Music Blog!</h1>
+    <p>This is the home all of music albums. Explore to experience another wolrd of music albums from top artists in the world.</p>
+    <p><a class="btn btn-primary btn-lg" routerLink="/" role="button">Learn more &raquo;</a></p>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
+    <!-- Load posts -->
     <ng-container *ngFor="let post of posts  | paginate: {itemsPerPage:itemsCount.value, currentPage: page};
         index as k">
-      <div class="col">
+      <div class="col-md-4 col-sm-6">
         <app-post-card [post]="post"></app-post-card>
       </div>
-      <div *ngIf="(k + 1) % 3 === 0" class="w-100"></div>
+      <!-- <div *ngIf="(k + 1) % 3 === 0" class="w-100"></div> -->
     </ng-container>
   </div>
-
+  <!--Loading Spinner -->
   <span *ngIf="loading" class="text-success">
       <i class="fas fa-spinner fa-pulse fa-3x"></i>
   </span>

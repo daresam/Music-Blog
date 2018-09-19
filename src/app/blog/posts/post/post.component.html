@@ -1,23 +1,46 @@
-<div class="container">
-  <div class="row">
+<div class="container mb-5">
+    <div class="row mt-4 ">
+        <div class="col">
+          <h4 class="text-success">Post</h4>
+          <hr>
+        </div>
+      </div>
+  <div class="row mt-3">
     <div class="col">
-        <div class="card mb-3">
-            <img class="card-img-top" src="../../../../assets/images/placeholder.png" style="height: 20rem" alt="Card image cap">
+        <div class="card ">
+            <img class="card-img-top" src="../../../../assets/images/thumbnail.svg" style="height: 20rem" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{ post?.title }}</h5>
               <p class="card-text">{{ post?.body }}.</p>
               <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
             </div>
-            <div> <i class="fas fa-comment text-primary"></i> {{ comments?.length }}</div>
+            <div class="d-flex justify-content-center align-items-center"> <i class="fas fa-comment text-primary mr-2"></i>  {{ comments?.length }}</div>
 
             <hr>
-
-          <ng-container >
-            <app-comments [comments]="comments"></app-comments>
-          </ng-container>
-          <span *ngIf="loading" class="text-success">
-              <i class="fas fa-spinner fa-pulse fa-3x"></i>
-          </span>
+            <!-- Add Comment -->
+            <form class="">
+              <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="form-group">
+                        <label for="comment">Add Comment</label>
+                      <textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button"  class="btn btn-success ">Submit</button>
+                    </div>
+                </div>
+              </div>
+              
+            </form>
+            <!-- Comments Component -->
+            <ng-container class="mb-3">
+                <app-comments [comments]="comments"></app-comments>
+            </ng-container>
+           
+            <!-- Loading Spinner -->
+            <span *ngIf="loading" class="text-success">
+                <i class="fas fa-spinner fa-pulse fa-3x"></i>
+            </span>
         </div>
 
     </div>

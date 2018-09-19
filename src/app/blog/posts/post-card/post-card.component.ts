@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../../../model/Post';
 import { Comment } from '../../../model/comment';
 import { BlogService } from '../../../services/blog.service';
+import { User } from '../../../model/User';
 
 @Component({
   selector: 'app-post-card',
@@ -10,8 +11,8 @@ import { BlogService } from '../../../services/blog.service';
 })
 export class PostCardComponent implements OnInit {
 
-  comments: Comment[];
-  @Input('post') post: Post;
+  comments: Comment[]; // Store all the comments from the api
+  @Input('post') post: Post; // Input post property
   constructor(private blogService: BlogService) { }
 
   ngOnInit() {
@@ -27,4 +28,5 @@ export class PostCardComponent implements OnInit {
         }
       });
   }
+
 }
